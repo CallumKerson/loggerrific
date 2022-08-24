@@ -1,4 +1,9 @@
 # loggerrific
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/CallumKerrEdwards/loggerrific?style=flat-square)](https://goreportcard.com/report/github.com/CallumKerrEdwards/loggerrific)
+[![Go Reference](https://pkg.go.dev/badge/github.com/CallumKerrEdwards/loggerrific.svg)](https://pkg.go.dev/github.com/CallumKerrEdwards/loggerrific)
+[![Release](https://img.shields.io/github/release/CallumKerrEdwards/loggerrific.svg?style=flat-square)](https://github.com/CallumKerrEdwards/loggerrific/releases/latest)
+
 `loggerrific` is a logging interface for abstracting the choice of logging framework
 for an application written in Go.
 

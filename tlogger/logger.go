@@ -3,7 +3,7 @@ package tlogger
 import (
 	"testing"
 
-	"github.com/CallumKerrEdwards/loggerrific"
+	"github.com/CallumKerson/loggerrific"
 )
 
 type TLogger struct {

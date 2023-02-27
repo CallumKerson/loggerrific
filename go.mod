@@ -1,3 +1,3 @@
-module github.com/CallumKerrEdwards/loggerrific
+module github.com/CallumKerson/loggerrific
 
 go 1.19

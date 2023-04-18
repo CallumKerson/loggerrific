@@ -16,15 +16,15 @@ func New() *NoOpLogger {
 }
 
 func (l *NoOpLogger) WithField(key string, value interface{}) loggerrific.Entry {
-	return &NoOptEntry{}
+	return &NoOpEntry{}
 }
 
 func (l *NoOpLogger) WithFields(fields map[string]interface{}) loggerrific.Entry {
-	return &NoOptEntry{}
+	return &NoOpEntry{}
 }
 
 func (l *NoOpLogger) WithError(err error) loggerrific.Entry {
-	return &NoOptEntry{}
+	return &NoOpEntry{}
 }
 
 func (l *NoOpLogger) SetLevelDebug() {}

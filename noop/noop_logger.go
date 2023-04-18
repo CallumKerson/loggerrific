@@ -1,7 +1,7 @@
 // package noopt provides an no operation (noop) implementation of the l
 // loggerrific interface that can be used as a default implementation if no
 // other implementation is provided.
-package noopt
+package noop
 
 import (
 	"github.com/CallumKerson/loggerrific"

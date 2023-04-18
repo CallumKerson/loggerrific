@@ -51,15 +51,15 @@ func (l *NoOptLogger) IsErrorEnabled() bool {
 	return false
 }
 
-func (e *NoOptLogger) Debugf(format string, args ...interface{}) {}
-func (e *NoOptLogger) Infof(format string, args ...interface{})  {}
-func (e *NoOptLogger) Warnf(format string, args ...interface{})  {}
-func (e *NoOptLogger) Errorf(format string, args ...interface{}) {}
+func (l *NoOptLogger) Debugf(format string, args ...interface{}) {}
+func (l *NoOptLogger) Infof(format string, args ...interface{})  {}
+func (l *NoOptLogger) Warnf(format string, args ...interface{})  {}
+func (l *NoOptLogger) Errorf(format string, args ...interface{}) {}
 
-func (e *NoOptLogger) Debugln(args ...interface{}) {}
-func (e *NoOptLogger) Infoln(args ...interface{})  {}
-func (e *NoOptLogger) Warnln(args ...interface{})  {}
-func (e *NoOptLogger) Errorln(args ...interface{}) {}
+func (l *NoOptLogger) Debugln(args ...interface{}) {}
+func (l *NoOptLogger) Infoln(args ...interface{})  {}
+func (l *NoOptLogger) Warnln(args ...interface{})  {}
+func (l *NoOptLogger) Errorln(args ...interface{}) {}
 
 type NoOptEntry struct {
 }

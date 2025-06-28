@@ -110,6 +110,18 @@ tasks:
       - go clean
       - rm -f ./.out/coverage.out ./.out/coverage.html ./.out/coverage.txt ./.out/ctrf-report.json
 
+  release:check:
+    desc: Check GoReleaser configuration
+    cmds:
+      - goreleaser check
+
+  release:snapshot:
+    desc: Create a snapshot release (test without publishing)
+    deps:
+      - release:check
+    cmds:
+      - goreleaser release --snapshot --clean
+
   godoc:
     desc: Run local godoc server at http://localhost:6060
     cmds:

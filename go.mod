@@ -1,3 +1,3 @@
 module github.com/CallumKerson/loggerrific
 
-go 1.19
+go 1.21

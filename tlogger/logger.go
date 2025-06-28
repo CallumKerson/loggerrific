@@ -26,20 +26,28 @@ func (l *TLogger) WithError(_ error) loggerrific.Entry {
 	return &TEntry{t: l.T}
 }
 
+func (l *TLogger) SetLevelDebug() {}
+
+func (l *TLogger) SetLevelInfo() {}
+
+func (l *TLogger) SetLevelWarn() {}
+
+func (l *TLogger) SetLevelError() {}
+
 func (l *TLogger) Debugf(format string, args ...interface{}) {
-	l.T.Logf("debug: "+format, args)
+	l.T.Logf("debug: "+format, args...)
 }
 
 func (l *TLogger) Infof(format string, args ...interface{}) {
-	l.T.Logf("info: "+format, args)
+	l.T.Logf("info: "+format, args...)
 }
 
 func (l *TLogger) Warnf(format string, args ...interface{}) {
-	l.T.Logf("warn: "+format, args)
+	l.T.Logf("warn: "+format, args...)
 }
 
 func (l *TLogger) Errorf(format string, args ...interface{}) {
-	l.T.Logf("error "+format, args)
+	l.T.Logf("error: "+format, args...)
 }
 
 func (l *TLogger) Debugln(args ...interface{}) {

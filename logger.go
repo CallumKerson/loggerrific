@@ -5,6 +5,11 @@ type Logger interface {
 	WithFields(fields map[string]interface{}) Entry
 	WithError(err error) Entry
 
+	SetLevelDebug()
+	SetLevelInfo()
+	SetLevelWarn()
+	SetLevelError()
+
 	Debugf(format string, args ...interface{})
 	Infof(format string, args ...interface{})
 	Warnf(format string, args ...interface{})

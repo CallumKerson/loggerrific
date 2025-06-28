@@ -1,4 +1,4 @@
-// package noopt provides an no operation (noop) implementation of the l
+// Package noop provides a no operation (noop) implementation of the
 // loggerrific interface that can be used as a default implementation if no
 // other implementation is provided.
 package noop

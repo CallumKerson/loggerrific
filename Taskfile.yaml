@@ -1,0 +1,94 @@
+version: "3"
+
+tasks:
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list
+
+  test:
+    desc: Run all tests
+    cmds:
+      - go test ./...
+
+  test:verbose:
+    desc: Run tests with verbose output
+    cmds:
+      - go test -v ./...
+
+  test:race:
+    desc: Run tests with race detection
+    cmds:
+      - go test -race ./...
+
+  test:cover:
+    desc: Run tests with coverage and generate HTML report
+    cmds:
+      - mkdir -p ./.out/
+      - go test -coverprofile=./.out/coverage.out ./...
+      - go tool cover -html=./.out/coverage.out -o ./.out/coverage.html
+      - "echo Coverage report generated: ./.out/coverage.html"
+
+  lint:
+    desc: Run golangci-lint
+    cmds:
+      - golangci-lint run
+
+  fmt:
+    desc: Formats Go code
+    cmds:
+      - go fmt ./...
+
+  fmt:check:
+    desc: Checks format of Go code
+    cmds:
+      - gofmt -l .
+
+  vet:
+    desc: Run go vet
+    cmds:
+      - go vet ./...
+
+  mod:tidy:
+    desc: Tidy go.mod
+    cmds:
+      - go mod tidy
+
+  mod:verify:
+    desc: Verify go.mod
+    cmds:
+      - go mod verify
+
+  check:
+    desc: Run all checks (fmt, vet, lint, test)
+    deps:
+      - fmt:check
+      - vet
+      - lint
+      - test
+
+  precommit:
+    desc: Run all formatters and checks
+    cmds:
+      - task: fmt
+      - task: mod:tidy
+      - task: check
+
+  ci:
+    desc: Run continuous integration checks
+    deps:
+      - mod:verify
+      - check
+
+  clean:
+    desc: Clean build artifacts and temporary files
+    cmds:
+      - go clean
+      - rm -f ./.out/coverage.out ./.out/coverage.html
+
+  godoc:
+    desc: Run local godoc server at http://localhost:6060
+    cmds:
+      - echo "Starting godoc server at http://localhost:6060"
+      - echo "Press Ctrl+C to stop"
+      - godoc -http=:6060

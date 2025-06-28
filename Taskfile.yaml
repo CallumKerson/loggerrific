@@ -78,7 +78,9 @@ tasks:
     desc: Run continuous integration checks
     deps:
       - mod:verify
-      - check
+      - fmt:check
+      - vet
+      - test
 
   clean:
     desc: Clean build artifacts and temporary files

@@ -29,6 +29,11 @@ tasks:
       - go tool cover -html=./.out/coverage.out -o ./.out/coverage.html
       - "echo Coverage report generated: ./.out/coverage.html"
 
+  bench:
+    desc: Run benchmarks
+    cmds:
+      - go test -bench=. ./...
+
   lint:
     desc: Run golangci-lint
     cmds:
@@ -59,6 +64,13 @@ tasks:
     cmds:
       - go mod verify
 
+  install:ctrf:
+    desc: Install go-ctrf-json-reporter if not available
+    status:
+      - command -v go-ctrf-json-reporter
+    cmds:
+      - go install github.com/ctrf-io/go-ctrf-json-reporter/cmd/go-ctrf-json-reporter@latest
+
   check:
     desc: Run all checks (fmt, vet, lint, test)
     deps:
@@ -74,6 +86,15 @@ tasks:
       - task: mod:tidy
       - task: check
 
+  ci:test:
+    desc: Runs the tests and produces the correct reports for CI
+    deps:
+      - install:ctrf
+    cmds:
+      - mkdir -p ./.out/
+      - go test -cover -coverprofile=./.out/coverage.txt ./...
+      - go test -json ./... | go-ctrf-json-reporter -output ./.out/ctrf-report.json
+
   ci:
     desc: Run continuous integration checks
     deps:
@@ -81,12 +102,13 @@ tasks:
       - fmt:check
       - vet
       - test
+      - ci:test
 
   clean:
     desc: Clean build artifacts and temporary files
     cmds:
       - go clean
-      - rm -f ./.out/coverage.out ./.out/coverage.html
+      - rm -f ./.out/coverage.out ./.out/coverage.html ./.out/coverage.txt ./.out/ctrf-report.json
 
   godoc:
     desc: Run local godoc server at http://localhost:6060

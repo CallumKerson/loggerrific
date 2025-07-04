@@ -28,7 +28,7 @@ jobs:
         run: task ci
 
       - name: Report test results
-        uses: ctrf-io/github-test-reporter@e67da0557d332ad40c7fa1bc59a530106e7d639b # v1
+        uses: ctrf-io/github-test-reporter@bb6b54d6514e0952c3eea739be0c641143d1f06c # v1
         if: always()
         with:
           report-path: ./.out/ctrf-report.json

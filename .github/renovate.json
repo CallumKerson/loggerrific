@@ -4,6 +4,7 @@
     "config:best-practices",
     "schedule:daily",
     ":automergeStableNonMajor",
+    ":automergeDigest",
     "customManagers:githubActionsVersions",
     ":prHourlyLimit4"
   ],

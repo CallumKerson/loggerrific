@@ -78,6 +78,7 @@ linters:
       - linters:
           - bodyclose
           - funlen
+          - goconst
           - gosec
           - lll
         path: _test\.go

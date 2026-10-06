@@ -35,7 +35,7 @@ func TestNoOpLoggerMethods(t *testing.T) {
 	}
 
 	// Test WithFields
-	fields := map[string]interface{}{
+	fields := map[string]any{
 		"field1": "value1",
 		"field2": 42,
 		"field3": true,
@@ -92,7 +92,7 @@ func TestNoOpEntry(t *testing.T) {
 	entry := logger.WithField("test", "value")
 
 	// Test interface compliance
-	var _ = entry
+	_ = entry
 
 	// All entry methods should be no-ops and not panic
 	defer func() {
@@ -131,7 +131,7 @@ func BenchmarkNoOpLogger(b *testing.B) {
 	})
 
 	b.Run("WithFields", func(b *testing.B) {
-		fields := map[string]interface{}{
+		fields := map[string]any{
 			"field1": "value1",
 			"field2": 42,
 		}

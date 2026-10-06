@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#MISE depends=["golang:mod-tidy-check"]
+#MISE sources=["go.mod", "go.sum", "**/*.go"]
+#MISE outputs={auto = true}
+
+set -euxo pipefail
+
+# gotestsum runs go test. CI sets GOTESTSUM_FORMAT and GOTESTSUM_JSONFILE to group the log and report the results
+gotestsum -- -race ./...

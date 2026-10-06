@@ -32,7 +32,7 @@ func TestTLoggerMethods(t *testing.T) {
 	}
 
 	// Test WithFields
-	fields := map[string]interface{}{
+	fields := map[string]any{
 		"field1": "value1",
 		"field2": 42,
 		"field3": true,
@@ -110,7 +110,7 @@ func TestTEntry(t *testing.T) {
 	entry := logger.WithField("test", "value")
 
 	// Test interface compliance
-	var _ = entry
+	_ = entry
 
 	// Test formatted logging methods don't panic
 	defer func() {

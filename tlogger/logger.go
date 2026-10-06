@@ -14,11 +14,11 @@ func NewTLogger(t *testing.T) *TLogger {
 	return &TLogger{T: t}
 }
 
-func (l *TLogger) WithField(_ string, _ interface{}) loggerrific.Entry {
+func (l *TLogger) WithField(_ string, _ any) loggerrific.Entry {
 	return &TEntry{t: l.T}
 }
 
-func (l *TLogger) WithFields(_ map[string]interface{}) loggerrific.Entry {
+func (l *TLogger) WithFields(_ map[string]any) loggerrific.Entry {
 	return &TEntry{t: l.T}
 }
 
@@ -34,36 +34,36 @@ func (l *TLogger) SetLevelWarn() {}
 
 func (l *TLogger) SetLevelError() {}
 
-func (l *TLogger) Debugf(format string, args ...interface{}) {
+func (l *TLogger) Debugf(format string, args ...any) {
 	l.T.Logf(levelDebug+": "+format, args...)
 }
 
-func (l *TLogger) Infof(format string, args ...interface{}) {
+func (l *TLogger) Infof(format string, args ...any) {
 	l.T.Logf(levelInfo+": "+format, args...)
 }
 
-func (l *TLogger) Warnf(format string, args ...interface{}) {
+func (l *TLogger) Warnf(format string, args ...any) {
 	l.T.Logf(levelWarn+": "+format, args...)
 }
 
-func (l *TLogger) Errorf(format string, args ...interface{}) {
+func (l *TLogger) Errorf(format string, args ...any) {
 	l.T.Logf(levelError+": "+format, args...)
 }
 
-func (l *TLogger) Debugln(args ...interface{}) {
-	l.T.Log(append([]interface{}{levelDebug}, args...)...)
+func (l *TLogger) Debugln(args ...any) {
+	l.T.Log(append([]any{levelDebug}, args...)...)
 }
 
-func (l *TLogger) Infoln(args ...interface{}) {
-	l.T.Log(append([]interface{}{levelInfo}, args...)...)
+func (l *TLogger) Infoln(args ...any) {
+	l.T.Log(append([]any{levelInfo}, args...)...)
 }
 
-func (l *TLogger) Warnln(args ...interface{}) {
-	l.T.Log(append([]interface{}{levelWarn}, args...)...)
+func (l *TLogger) Warnln(args ...any) {
+	l.T.Log(append([]any{levelWarn}, args...)...)
 }
 
-func (l *TLogger) Errorln(args ...interface{}) {
-	l.T.Log(append([]interface{}{levelError}, args...)...)
+func (l *TLogger) Errorln(args ...any) {
+	l.T.Log(append([]any{levelError}, args...)...)
 }
 
 func (l *TLogger) IsDebugEnabled() bool {

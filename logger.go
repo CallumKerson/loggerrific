@@ -1,8 +1,8 @@
 package loggerrific
 
 type Logger interface {
-	WithField(key string, value interface{}) Entry
-	WithFields(fields map[string]interface{}) Entry
+	WithField(key string, value any) Entry
+	WithFields(fields map[string]any) Entry
 	WithError(err error) Entry
 
 	SetLevelDebug()
@@ -10,15 +10,15 @@ type Logger interface {
 	SetLevelWarn()
 	SetLevelError()
 
-	Debugf(format string, args ...interface{})
-	Infof(format string, args ...interface{})
-	Warnf(format string, args ...interface{})
-	Errorf(format string, args ...interface{})
+	Debugf(format string, args ...any)
+	Infof(format string, args ...any)
+	Warnf(format string, args ...any)
+	Errorf(format string, args ...any)
 
-	Debugln(args ...interface{})
-	Infoln(args ...interface{})
-	Warnln(args ...interface{})
-	Errorln(args ...interface{})
+	Debugln(args ...any)
+	Infoln(args ...any)
+	Warnln(args ...any)
+	Errorln(args ...any)
 
 	IsDebugEnabled() bool
 	IsInfoEnabled() bool

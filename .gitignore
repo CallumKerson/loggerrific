@@ -15,3 +15,15 @@
 # vendor/
 # Added by goreleaser init:
 dist/
+
+.DS_Store
+
+# Go workspace file
+go.work
+
+*.local*
+
+.serena/
+
+# JUnit reports written on CI
+test-results/

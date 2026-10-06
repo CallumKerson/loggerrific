@@ -7,19 +7,18 @@ import (
 	"github.com/CallumKerson/loggerrific"
 )
 
-type NoOpLogger struct {
-}
+type NoOpLogger struct{}
 
 func New() *NoOpLogger {
 	noOpLogger := &NoOpLogger{}
 	return noOpLogger
 }
 
-func (l *NoOpLogger) WithField(key string, value interface{}) loggerrific.Entry {
+func (l *NoOpLogger) WithField(key string, value any) loggerrific.Entry {
 	return &NoOpEntry{}
 }
 
-func (l *NoOpLogger) WithFields(fields map[string]interface{}) loggerrific.Entry {
+func (l *NoOpLogger) WithFields(fields map[string]any) loggerrific.Entry {
 	return &NoOpEntry{}
 }
 
@@ -51,25 +50,24 @@ func (l *NoOpLogger) IsErrorEnabled() bool {
 	return false
 }
 
-func (l *NoOpLogger) Debugf(format string, args ...interface{}) {}
-func (l *NoOpLogger) Infof(format string, args ...interface{})  {}
-func (l *NoOpLogger) Warnf(format string, args ...interface{})  {}
-func (l *NoOpLogger) Errorf(format string, args ...interface{}) {}
+func (l *NoOpLogger) Debugf(format string, args ...any) {}
+func (l *NoOpLogger) Infof(format string, args ...any)  {}
+func (l *NoOpLogger) Warnf(format string, args ...any)  {}
+func (l *NoOpLogger) Errorf(format string, args ...any) {}
 
-func (l *NoOpLogger) Debugln(args ...interface{}) {}
-func (l *NoOpLogger) Infoln(args ...interface{})  {}
-func (l *NoOpLogger) Warnln(args ...interface{})  {}
-func (l *NoOpLogger) Errorln(args ...interface{}) {}
+func (l *NoOpLogger) Debugln(args ...any) {}
+func (l *NoOpLogger) Infoln(args ...any)  {}
+func (l *NoOpLogger) Warnln(args ...any)  {}
+func (l *NoOpLogger) Errorln(args ...any) {}
 
-type NoOpEntry struct {
-}
+type NoOpEntry struct{}
 
-func (e *NoOpEntry) Debugf(format string, args ...interface{}) {}
-func (e *NoOpEntry) Infof(format string, args ...interface{})  {}
-func (e *NoOpEntry) Warnf(format string, args ...interface{})  {}
-func (e *NoOpEntry) Errorf(format string, args ...interface{}) {}
+func (e *NoOpEntry) Debugf(format string, args ...any) {}
+func (e *NoOpEntry) Infof(format string, args ...any)  {}
+func (e *NoOpEntry) Warnf(format string, args ...any)  {}
+func (e *NoOpEntry) Errorf(format string, args ...any) {}
 
-func (e *NoOpEntry) Debugln(args ...interface{}) {}
-func (e *NoOpEntry) Infoln(args ...interface{})  {}
-func (e *NoOpEntry) Warnln(args ...interface{})  {}
-func (e *NoOpEntry) Errorln(args ...interface{}) {}
+func (e *NoOpEntry) Debugln(args ...any) {}
+func (e *NoOpEntry) Infoln(args ...any)  {}
+func (e *NoOpEntry) Warnln(args ...any)  {}
+func (e *NoOpEntry) Errorln(args ...any) {}

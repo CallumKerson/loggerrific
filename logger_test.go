@@ -24,7 +24,7 @@ func TestLoggerInterface(t *testing.T) {
 	for _, testCase := range tests {
 		t.Run(testCase.name, func(t *testing.T) {
 			// Test interface compliance
-			var _ = testCase.logger
+			_ = testCase.logger
 
 			// Test WithField returns Entry
 			entry := testCase.logger.WithField("key", "value")
@@ -33,7 +33,7 @@ func TestLoggerInterface(t *testing.T) {
 			}
 
 			// Test WithFields returns Entry
-			fields := map[string]interface{}{
+			fields := map[string]any{
 				"field1": "value1",
 				"field2": 42,
 			}
@@ -122,7 +122,7 @@ func TestEntryInterface(t *testing.T) {
 			entry := testCase.logger.WithField("test", "value")
 
 			// Test interface compliance
-			var _ = entry
+			_ = entry
 
 			// Test all entry logging methods don't panic
 			testEntryLoggingMethods(t, entry)

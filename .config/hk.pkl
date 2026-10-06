@@ -1,0 +1,59 @@
+amends "package://github.com/jdx/hk/releases/download/v2.4.0/hk@2.4.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.4.0/hk@2.4.0#/Builtins.pkl"
+
+min_hk_version = "2.4.0"
+
+// mise verifies its lockfile and sidecar locks by digest, so formatting them breaks `mise install --locked`.
+// Release tools write CHANGELOG.md, whose commit hashes typos reads as misspellings, and LICENSE is fixed legal text.
+exclude = List(".config/mise.lock", ".config/mise/locks", "CHANGELOG.md", "LICENSE")
+
+local fast_linters = new Mapping<String, Step> {
+    ["gomodtidy"] = Builtins.gomod_tidy
+    ["gofmt"] = Builtins.go_fmt
+    ["rumdl"] = Builtins.rumdl
+    ["ryl"] = Builtins.ryl
+    ["tombi"] = Builtins.tombi
+    ["tombi_format"] = Builtins.tombi_format
+    ["actionlint"] = Builtins.actionlint
+    ["zizmor"] = Builtins.zizmor
+    ["newlines"] = Builtins.newlines
+    ["trailing_whitespace"] = Builtins.trailing_whitespace
+    ["typos"] = Builtins.typos
+}
+
+local slow_linters = new Mapping<String, Step> {
+    ["golangci-lint"] = Builtins.golangci_lint
+}
+
+local all_linters = new Mapping<String, Step> {
+    ...fast_linters
+    ...slow_linters
+}
+
+hooks {
+    ["commit-msg"] {
+        steps {
+            ["check_conventional_commit"] = Builtins.check_conventional_commit
+            ["typos"] {
+                check = "typos {{commit_msg_file}}"
+            }
+        }
+    }
+    ["pre-commit"] {
+        fix = true
+        stash = "git"
+        steps = fast_linters
+    }
+    ["pre-push"] {
+        fix = true
+        stash = "git"
+        steps = all_linters
+    }
+    ["fix"] {
+        fix = true
+        steps = all_linters
+    }
+    ["check"] {
+        steps = all_linters
+    }
+}

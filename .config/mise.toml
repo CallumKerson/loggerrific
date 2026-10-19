@@ -2,7 +2,7 @@
 actionlint = "1.7.12"
 "aqua:owenlamont/ryl" = "0.24.0"
 "github:golangci/golangci-lint" = "v2.14.0"
-go = "1.27.1"
+go = "1.27.2"
 # Runs go test, and writes JSON reports for CI
 gotestsum = "1.13.0"
 hk = "2.5.0"

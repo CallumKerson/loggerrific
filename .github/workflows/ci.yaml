@@ -16,6 +16,7 @@ jobs:
   ci:
     name: ci
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
       statuses: write # to report the test results

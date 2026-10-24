@@ -1,17 +1,16 @@
 [tools]
-actionlint = "1.7.12"
 "aqua:owenlamont/ryl" = "0.24.0"
 "github:golangci/golangci-lint" = "v2.14.0"
 go = "1.27.2"
 # Runs go test, and writes JSON reports for CI
 gotestsum = "1.13.0"
-hk = "2.5.0"
+hk = "2.7.0"
+jactionlint = "2.3.0"
 rumdl = "v0.2.79"
-# actionlint runs shellcheck over workflow run: scripts
+# jactionlint runs shellcheck over workflow run: scripts
 shellcheck = "0.11.0"
 tombi = "1.8.4"
 typos = "1.50.3"
-zizmor = "1.30.1"
 
 [task_config]
 includes = ["tasks"]

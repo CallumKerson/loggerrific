@@ -6,7 +6,7 @@ go = "1.27.2"
 gotestsum = "1.13.0"
 hk = "2.7.0"
 jactionlint = "2.3.0"
-rumdl = "v0.2.79"
+rumdl = "v0.3.0"
 # jactionlint runs shellcheck over workflow run: scripts
 shellcheck = "0.11.0"
 tombi = "1.8.7"

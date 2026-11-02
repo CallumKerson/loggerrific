@@ -10,7 +10,7 @@ rumdl = "v0.3.0"
 # jactionlint runs shellcheck over workflow run: scripts
 shellcheck = "0.11.0"
 tombi = "1.9.6"
-typos = "1.50.3"
+typos = "1.51.1"
 
 [task_config]
 includes = ["tasks"]

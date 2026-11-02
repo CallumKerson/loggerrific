@@ -1,5 +1,5 @@
 [tools]
-"aqua:owenlamont/ryl" = "0.26.0"
+"aqua:owenlamont/ryl" = "0.26.1"
 "github:golangci/golangci-lint" = "v2.15.0"
 go = "1.27.3"
 # Runs go test, and writes JSON reports for CI
